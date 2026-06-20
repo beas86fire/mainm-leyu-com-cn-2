@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欧博 · 简明指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f5f5f0;
+            color: #2b2b2b;
+            line-height: 1.65;
+        }
+
+        /* 深色头图 hero */
+        .hero {
+            background: #1f2a2e;
+            background-image: radial-gradient(circle at 20% 30%, #2e3d44 0%, #141b1e 90%);
+            min-height: 46vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            color: #e5e9e6;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.5rem;
+            color: #f0efeb;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            max-width: 540px;
+            margin: 0.5rem auto 0;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        .hero .meta-line {
+            margin-top: 1.8rem;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,235,0.15);
+            padding-top: 1.2rem;
+            width: 60%;
+            max-width: 320px;
+            opacity: 0.6;
+            letter-spacing: 0.03em;
+        }
+
+        /* 浅色正文区 */
+        .content {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 3rem 1.8rem 4rem;
+            background: #fafaf7;
+            box-shadow: 0 -2px 12px rgba(0,0,0,0.03);
+        }
+
+        /* 信息卡片网格 */
+        .card-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2.5rem 0 2.2rem;
+        }
+
+        .card {
+            flex: 1 1 280px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.04);
+            border: 1px solid #efede8;
+            transition: box-shadow 0.25s, transform 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            transform: translateY(-3px);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.9rem;
+            color: #252e2b;
+            letter-spacing: 0.02em;
+            border-left: 4px solid #7f8f8b;
+            padding-left: 0.8rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #3d4542;
+            margin-bottom: 0.6rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #eae8e2;
+            color: #2d3633;
+            padding: 0.2rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 0.03em;
+            margin-top: 0.5rem;
+        }
+
+        /* 自然链接段落 */
+        .link-section {
+            background: #f2f1ec;
+            padding: 1.8rem 2rem;
+            border-radius: 24px;
+            margin: 2rem 0 2.6rem;
+            line-height: 1.7;
+        }
+
+        .link-section p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        a {
+            color: #39635c;
+            text-decoration: none;
+            border-bottom: 1px solid #bcc9c4;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        a:hover {
+            color: #1a3f39;
+            border-bottom-color: #1a3f39;
+        }
+
+        /* 强调色用于链接 (已经融入) */
+        .highlight-link {
+            color: #3f786e;
+            border-bottom: 1px solid #b1c4be;
+            font-weight: 450;
+        }
+
+        /* 小提示风格 */
+        .note-box {
+            background: #ffffff;
+            border: 1px dashed #cbc8c0;
+            border-radius: 20px;
+            padding: 1.5rem 1.8rem;
+            margin: 2.2rem 0 1.8rem;
+            color: #3f4a45;
+            font-size: 0.95rem;
+        }
+
+        .note-box strong {
+            color: #2f403b;
+            font-weight: 500;
+        }
+
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1.8rem 0;
+        }
+
+        .faq-item {
+            flex: 1 1 200px;
+            background: #f6f5f0;
+            padding: 1rem 1.2rem;
+            border-radius: 16px;
+        }
+
+        .faq-item .q {
+            font-weight: 500;
+            color: #27312e;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-item .a {
+            font-size: 0.9rem;
+            color: #4d5853;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d6d3cb, transparent);
+            margin: 2.8rem 0 1.8rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #737b77;
+            padding: 2rem 0 1rem;
+            border-top: 1px solid #e3e0d9;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .content {
+                padding: 2rem 1.2rem;
+            }
+            .card {
+                flex: 1 1 100%;
+            }
+            .link-section {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <h1>欧博 · 简明指南</h1>
+    <p class="sub">基于实际使用场景的信息索引 · 一次访问提醒式的浏览路径</p>
+    <div class="meta-line">保持轻量 · 关注本质</div>
+</header>
+
+<main class="content">
+    <!-- 主视觉描述 / 介绍段落 -->
+    <section style="margin-bottom: 0.8rem;">
+        <p style="font-size: 1.05rem; max-width: 760px;">
+            如果你正在寻找一个结构清晰、信息直接的线上资源，<a href="https://com-oubo.com" class="highlight-link">欧博</a> 是一个值得留意的站点。它并非承载庞杂叙事，而是以相对克制的设计提供一类功能指引。下面从用途、适宜人群以及访问时需要注意的细节分别展开，帮助你快速判断是否匹配自己的需求。
+        </p>
+    </section>
+
+    <!-- 用途卡片 + 适合人群卡片 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>用途简述</h3>
+            <p>提供较规范的分类索引与内容入口，结构偏向直接、少干扰。适合快速定位特定模块，而不被过量信息分散注意。</p>
+            <span class="tag">信息导航</span>
+        </div>
+        <div class="card">
+            <h3>适合人群</h3>
+            <p>偏好简洁界面、希望直接进入主题的使用者；也适合需要定期参考同一资源集合的访问者。</p>
+            <span class="tag">效率型用户</span>
+        </div>
+        <div class="card">
+            <h3>场景参考</h3>
+            <p>日常查阅、对比信息、或作为固定访问路径中的一站。基于文本的清晰层级降低了理解成本。</p>
+            <span class="tag">轻量使用</span>
+        </div>
+    </div>
+
+    <!-- 自然链接段落：嵌入欧博链接 -->
+    <div class="link-section">
+        <p>在开始浏览之前，有几点值得留意：首先，<a href="https://com-oubo.com">欧博</a> 的页面结构偏向静态，加载速度较快，但部分交互反馈需要你主动点击才能触发。其次，网站没有过多装饰元素，因此信息层级主要依赖字体和间距区分，建议花一两分钟熟悉整体布局。</p>
+        <p>如果你之前访问过同类站点，可能会觉得 <a href="https://com-oubo.com">欧博</a> 的风格更朴素，但这恰好减少了视觉噪音。对于只需要核心内容的人来说，这种设计反而提高了效率。</p>
+    </div>
+
+    <!-- 提醒 / 访问小提示 -->
+    <div class="note-box">
+        <strong>访问提醒：</strong> 建议使用桌面端或大屏平板浏览，部分列表在窄屏下会自动堆叠，但内容完整。没有强制弹窗或注册门槛，可以直接使用。若遇到加载延迟，可稍后刷新。
+    </div>
+
+    <!-- FAQ 摘要 (自问自答式) -->
+    <h2 style="font-weight: 400; font-size: 1.5rem; color: #303b37; margin: 2.2rem 0 1rem; letter-spacing: 0.02em;">常见疑问摘要</h2>
+    <div class="faq-mini">
+        <div class="faq-item">
+            <div class="q">这个网站主要提供什么？</div>
+            <div class="a">分类索引与信息聚合，偏向实用导向，没有多余内容。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">需要注册或登录吗？</div>
+            <div class="a">不需要，直接打开即可浏览所有公开内容。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">移动端体验如何？</div>
+            <div class="a">页面自适应，但部分表格或列表在窄屏上需横向滚动。</div>
+        </div>
+    </div>
+
+    <!-- 一段收束性叙述 -->
+    <hr>
+    <p style="color: #4f5b56; font-size: 0.95rem; margin-top: 1rem;">
+        总的来说，<a href="https://com-oubo.com">欧博</a> 不是一个试图包罗万象的平台，而是倾向于提供一条清晰的路径。如果你正好在寻找这样的资源，不妨把它加入书签，作为日常参考的一站。以上是基于页面本身的一些观察，实际使用感受可能因个人习惯而异。
+    </p>
+
+    <div class="footer-note">
+        — 信息卡片式介绍 · 仅作参考 —
+    </div>
+</main>
+
+</body>
+</html>
