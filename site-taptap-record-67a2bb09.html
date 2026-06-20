@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>taptap点点 · 持续关注的数字站点</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f2f4f7;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #1f2a3e;
+      padding: 2rem 1.5rem;
+    }
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* 卡片系统 —— 浅灰背景 + 细边框 + 柔和阴影 */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e6ed;
+      border-radius: 18px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+      padding: 2rem 2.2rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    }
+
+    /* hero 区 */
+    .hero {
+      text-align: center;
+      padding: 3rem 2rem 2.5rem;
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+      color: #111c2e;
+    }
+    .hero .subhead {
+      font-size: 1.1rem;
+      color: #4a5a72;
+      max-width: 600px;
+      margin: 0 auto 0.8rem;
+    }
+    .hero .meta-note {
+      font-size: 0.9rem;
+      color: #6f7d94;
+      border-top: 1px solid #eaedf2;
+      display: inline-block;
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+
+    /* 区域标题 */
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 520;
+      margin-bottom: 0.3rem;
+      color: #1e2a3f;
+    }
+    .section-sub {
+      font-size: 0.95rem;
+      color: #5b6c84;
+      margin-bottom: 1.4rem;
+    }
+
+    /* 两栏 / 三栏 灵活网格 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    .feature-item {
+      background: #f8fafd;
+      border-radius: 14px;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid #e6ebf2;
+      transition: background 0.15s;
+    }
+    .feature-item h3 {
+      font-size: 1.08rem;
+      font-weight: 520;
+      margin-bottom: 0.25rem;
+      color: #17212e;
+    }
+    .feature-item p {
+      font-size: 0.9rem;
+      color: #415470;
+    }
+
+    /* 说明区 —— 段落承接 */
+    .explain-text p {
+      margin-bottom: 1rem;
+    }
+    .explain-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* FAQ 摘要卡片 */
+    .faq-list {
+      list-style: none;
+      padding: 0;
+    }
+    .faq-list li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #edf0f5;
+    }
+    .faq-list li:last-child {
+      border-bottom: none;
+    }
+    .faq-q {
+      font-weight: 510;
+      color: #1f2b3f;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .faq-a {
+      font-size: 0.9rem;
+      color: #4c5e78;
+    }
+
+    /* 底部链接区 */
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.8rem;
+    }
+    .footer-links .sitelink {
+      font-size: 1rem;
+    }
+    .footer-links a {
+      color: #1f2a3e;
+      text-decoration: none;
+      border-bottom: 1px solid #bcc6d4;
+      padding-bottom: 1px;
+    }
+    .footer-links a:hover {
+      border-bottom-color: #1f2a3e;
+    }
+    .footer-meta {
+      font-size: 0.85rem;
+      color: #697b95;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 780px) {
+      body {
+        padding: 1.2rem 1rem;
+      }
+      .card {
+        padding: 1.5rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+    }
+    @media (max-width: 500px) {
+      .hero {
+        padding: 1.8rem 0.5rem;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .feature-item {
+        padding: 1rem;
+      }
+    }
+
+    /* 辅助微调 */
+    .mt-1 { margin-top: 0.6rem; }
+    .mt-2 { margin-top: 1.2rem; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO 区 -->
+  <div class="card hero">
+    <h1>taptap点点 · 再次遇见的地方</h1>
+    <p class="subhead">
+      数字空间就像一本不断增补的笔记，收藏、回访、持续关注，才能发现其中累积的层次。
+    </p>
+    <p class="meta-note">
+      不论何时打开，它都在那里——等待被重新翻阅。
+    </p>
+  </div>
+
+  <!-- 优势区：从“再次访问、收藏、持续关注”切入 -->
+  <div class="card">
+    <div class="section-title">为什么值得反复回来</div>
+    <div class="section-sub">收藏是起点，回访才是理解的延续</div>
+    <div class="grid-3">
+      <div class="feature-item">
+        <h3>📌 收藏即锚点</h3>
+        <p>把感兴趣的页面或想法收入书架，等于为自己留下一枚可回溯的标记。时间越久，收藏越成为个人知识地图。</p>
+      </div>
+      <div class="feature-item">
+        <h3>🔁 回访刷新认知</h3>
+        <p>隔一段时间再次打开同一个站点，内容可能已经更新，而你的理解也会因为新的阅历而变化。</p>
+      </div>
+      <div class="feature-item">
+        <h3>👁️ 持续关注形成脉络</h3>
+        <p>单纯的一次性访问往往留不下印象，只有将某个信息源纳入定期关注列表，才能看到话题如何生长、演变。</p>
+      </div>
+    </div>
+    <div style="margin-top: 1.4rem; font-size: 0.9rem; color: #4b5d77; border-left: 3px solid #d0d8e4; padding-left: 1rem;">
+      “回访”不是重复劳动，而是帮自己把散落的点连成线。
+    </div>
+  </div>
+
+  <!-- 说明区：段落之间有承接，从收藏 → 持续关注 → 知识沉淀 -->
+  <div class="card explain-text">
+    <div class="section-title">从收藏到沉淀</div>
+    <div class="section-sub">一种朴素的数字工作流</div>
+    <p>
+      很多人习惯把喜欢的链接随手存起来，但收藏夹越堆越长，真正再看一遍的却寥寥无几。其实，<strong>收藏的价值取决于回访的频率</strong>。一个被反复打开的页面，会从“看过”变成“理解过”；一个被多次思考的观点，才可能融入自己的知识结构。
+    </p>
+    <p>
+      持续关注某个主题，就像在花园里定期浇水。起初只是一颗种子，几次回访之后，你会看到它长出新的枝杈。这正是 <a href="https://site-taptap.com" style="color: #1f2a3e; text-decoration: underline; text-decoration-color: #b0bed0; text-underline-offset: 3px;">taptap点点</a> 所鼓励的节奏：不必急于一次性读完所有内容，而是保持一种“随时可以回来”的开放状态。
+    </p>
+    <p>
+      当收藏、回访和关注形成闭环，原本零散的信息逐渐聚合成主题脉络。这时候你会发现，真正的收获不在于收藏了多少链接，而在于哪些页面你真正认真读过两次以上，并在心里留下了痕迹。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要（精简，2-3 条） -->
+  <div class="card">
+    <div class="section-title">常见疑问</div>
+    <div class="section-sub">关于回访与关注的一些小问题</div>
+    <ul class="faq-list">
+      <li>
+        <span class="faq-q">❓ 收藏太多，怎么记得回来？</span>
+        <span class="faq-a">不需要记住每个收藏。可以定期（比如每两周）打开收藏夹，挑一两个看起来还有兴趣的页面重新读一遍。重点不是数量，是回访的质量。</span>
+      </li>
+      <li>
+        <span class="faq-q">❓ 持续关注会不会变成信息负担？</span>
+        <span class="faq-a">如果你感觉某个源让你感到焦虑或疲惫，完全可以暂停关注。持续关注的本质是“有选择地保持连接”，而不是无休止地刷新。</span>
+      </li>
+      <li>
+        <span class="faq-q">❓ 怎么判断一个页面值得再访？</span>
+        <span class="faq-a">一个简单的标准：当你第一次读完时，心里产生过“这个观点还可以再想想”的念头，就值得标记并回访。</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 底部链接区 -->
+  <div class="card" style="margin-bottom: 0.5rem;">
+    <div class="footer-links">
+      <span class="sitelink">
+        <a href="https://site-taptap.com">taptap点点</a>
+      </span>
+      <span class="footer-meta">
+        可以随时再来 · 收藏不是终点，回访才是
+      </span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
